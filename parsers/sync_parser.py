@@ -1,5 +1,4 @@
-def parse_cloud_sync_status(
-        collected_sync):
+def parse_cloud_sync_status(collected_sync):
     """
     Parse cloud sync status.
 
@@ -13,6 +12,21 @@ def parse_cloud_sync_status(
             collected_sync["sync_status"]
         )
 
+        # --------------------------------------------------
+        # Business Logic
+        # --------------------------------------------------
+        sync_state = sync_status.get("id")
+
+        show_details = (
+            sync_state not in [
+                "Off",
+                "Synced"
+            ]
+        )
+
+        # --------------------------------------------------
+        # Parsed Output
+        # --------------------------------------------------
         parsed_sync = {
 
             # --------------------------------------------------
@@ -25,32 +39,59 @@ def parse_cloud_sync_status(
             # Sync Status
             # --------------------------------------------------
             "sync_status":
-                sync_status.get("id"),
+                sync_state,
 
             "last_failed_scan_time":
                 sync_status.get(
                     "lastFailedScanTime"
-                ),
-
+                ) if show_details else None,
+            
             "last_failed_upload_file":
-                sync_status.get(
-                    "lastFailedUploadFile"
-                ),
+                (
+                    sync_status
+                    .get("lastFailedUploadFile", {})
+                    .get("name")
+                )
+                if (
+                    show_details
+                    and sync_status.get(
+                        "lastFailedUploadFile"
+                    )
+                )
+                else None,
 
             "last_upload_delete_file":
-                sync_status.get(
-                    "lastUploadDeleteFile"
-                ),
+                (
+                    sync_status
+                    .get("lastUploadDeleteFile", {})
+                    .get("name")
+                )
+                if (
+                    show_details
+                    and sync_status.get(
+                        "lastUploadDeleteFile"
+                    )
+                )
+                else None,
 
             "last_upload_file":
-                sync_status.get(
-                    "lastUploadFile"
-                ),
+                (
+                    sync_status
+                    .get("lastUploadFile", {})
+                    .get("name")
+                )
+                if (
+                    show_details
+                    and sync_status.get(
+                        "lastUploadFile"
+                    )
+                )
+                else None,
 
             "read_sync_knowledge":
                 sync_status.get(
                     "readSyncKnowledge"
-                ),
+                ) if show_details else None,
 
             # --------------------------------------------------
             # Counters
@@ -114,7 +155,7 @@ def parse_cloud_sync_status(
     except Exception as e:
 
         print(
-            "Failed parsing "
+            f"Failed parsing "
             f"sync status: {e}"
         )
 

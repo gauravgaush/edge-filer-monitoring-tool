@@ -30,6 +30,10 @@ def show_filer_monitoring(admin):
         f"{len(parsed_filers)} filer(s)"
     )
 
+    print(
+        f"\n✅ Cloud Sync Status Summary: "
+    )
+
     # -----------------------------------------------------
     # Default monitoring columns
     # -----------------------------------------------------

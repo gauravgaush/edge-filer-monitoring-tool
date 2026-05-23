@@ -1,5 +1,5 @@
 import cterasdk.settings
-from cterasdk import GlobalAdmin
+from cterasdk import ServicesPortal
 
 
 def connect_to_portal(portal, username, password):
@@ -10,7 +10,7 @@ def connect_to_portal(portal, username, password):
     try:
         cterasdk.settings.core.syn.settings.connector.ssl = False
 
-        admin = GlobalAdmin(portal)
+        admin = ServicesPortal(portal)
         admin.login(username, password)
 
         print(f"\n✅ Connected to portal: {portal}")
