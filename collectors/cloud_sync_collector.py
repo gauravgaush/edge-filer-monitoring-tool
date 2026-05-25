@@ -1,3 +1,21 @@
+"""
+Purpose:
+    Collect cloud sync status.
+
+Responsibilities:
+    - Retrieve sync status
+      for all Edge Filers
+
+Input:
+    Authenticated admin object
+
+Output:
+    Raw cloud sync data
+
+Notes:
+    Collector only.
+"""
+
 def collect_cloud_sync_status(admin):
     """
     Collect cloud sync status

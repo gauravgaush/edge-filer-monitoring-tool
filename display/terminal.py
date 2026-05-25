@@ -1,3 +1,22 @@
+"""
+Purpose:
+    Display parsed data.
+
+Responsibilities:
+    - Render terminal tables
+    - Support dynamic columns
+
+Input:
+    Parsed dictionaries
+
+Output:
+    Console output
+
+Notes:
+    Display only.
+    No API calls.
+"""
+
 def display_filers(parsed_filers, columns):
     """
     Dynamic filer table display
@@ -46,7 +65,21 @@ def display_filers(parsed_filers, columns):
         "scanning_files": "Scanning",
         "scanning_stubs": "Stubs",
         "partial_scanning": "Partial Scan",
-        "is_full_scan": "Full Scan"
+        "is_full_scan": "Full Scan",
+
+        # Zones 
+        "zone_id": "Zone ID",
+        "description": "Description",
+        "devices_count": "Devices",
+        "is_default": "Default",
+        "device_names": "Edge Filers",
+        "device_types": "Device Type",
+        "device_owners": "Owner",
+        "total_files": "Files",
+        "total_folders": "Folders",
+        "total_size": "Size (MB)",
+        "cloud_drive_folders": "Cloud Drive Folders",
+        
     }
 
     # ---------------------------------------------------

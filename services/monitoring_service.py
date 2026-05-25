@@ -1,3 +1,21 @@
+"""
+Purpose:
+    Edge Filer monitoring.
+
+Responsibilities:
+    - Collect filer data
+    - Parse filer data
+    - Display monitoring output
+
+Input:
+    Authenticated admin object
+
+Output:
+    Terminal monitoring view
+
+Notes:
+    Orchestration layer.
+"""
 from collectors.filer_collector import collect_all_filers
 from parsers.filer_parser import parse_filer
 from display.terminal import display_filers

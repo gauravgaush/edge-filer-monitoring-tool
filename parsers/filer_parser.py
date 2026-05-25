@@ -1,3 +1,22 @@
+"""
+Purpose:
+    Transform filer objects.
+
+Responsibilities:
+    - Parse raw SDK filer data
+    - Normalize fields
+
+Input:
+    Raw filer SDK object
+
+Output:
+    Parsed dictionary
+
+Notes:
+    Pure transformation only.
+    No API calls.
+"""
+
 def parse_filer(filer):
     """
     Parse raw filer object into normalized dictionary.

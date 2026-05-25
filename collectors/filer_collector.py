@@ -1,3 +1,21 @@
+"""
+Purpose:
+    Collect raw Edge Filer data.
+
+Responsibilities:
+    - Query portal for filers
+    - Return raw SDK objects
+
+Input:
+    Authenticated admin object
+
+Output:
+    List of filer SDK objects
+
+Notes:
+    Collector only.
+    No parsing or display logic.
+"""
 def collect_all_filers(admin):
     """
     Retrieve all Edge Filers from portal.

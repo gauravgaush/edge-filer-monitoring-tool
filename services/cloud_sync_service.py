@@ -1,3 +1,21 @@
+"""
+Purpose:
+    Cloud sync monitoring.
+
+Responsibilities:
+    - Collect sync data
+    - Parse sync status
+    - Display sync information
+
+Input:
+    Authenticated admin object
+
+Output:
+    Cloud sync monitoring
+
+Notes:
+    Orchestration layer.
+"""
 from collectors.cloud_sync_collector import (
     collect_cloud_sync_status
 )
@@ -42,6 +60,10 @@ def show_cloud_sync_status(admin):
         f"\n✅ Successfully parsed "
         f"{len(parsed_syncs)} "
         f"sync status object(s)"
+    )
+
+    print(
+        f"\n✅ Device Status Summary: "
     )
 
     # ---------------------------------------------------

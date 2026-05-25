@@ -1,9 +1,26 @@
+"""
+Purpose:
+    Main entry point for EF Tool.
+
+Responsibilities:
+    - Show menu
+    - Route user actions
+    - Initialize portal session
+    - Cleanup logout
+
+Input:
+    User menu selections
+
+Output:
+    Monitoring, actions, reports
+
+Notes:
+    Keep business logic out of main.py
+"""
+
 import sys
 from pathlib import Path
-from services.sync_action_service import (
-    suspend_cloud_sync,
-    un_suspend_cloud_sync
-)
+from services.reporting_service import report_menu
 
 # ---------------------------------------------------------
 # Allow imports from project folders
@@ -27,6 +44,10 @@ from services.sync_action_service import (
     suspend_cloud_sync
 )
 
+from services.sync_action_service import (
+    un_suspend_cloud_sync
+)
+
 
 def show_menu():
     """
@@ -41,7 +62,9 @@ def show_menu():
     print("2. Cloud Sync Status")
     print("3. Suspend Cloud Sync")
     print("4. Unsuspend Cloud Sync")
-    print("5. Exit")
+    print("5. Reports")
+    print("0. Exit")
+    
 
     return input(
         "\nSelect option: "
@@ -54,7 +77,7 @@ def main():
     # TEMP HARD-CODED VALUES (DEV ONLY)
     # ---------------------------------------------------------
     portal = "hcpae.lab.local"
-    username = "portaladmin"
+    username = "globaladmin"
     password = "Gddchyd@1234"
 
     # ---------------------------------------------------------
@@ -71,6 +94,8 @@ def main():
         return
 
     print("Login successful")
+
+    
 
     # ---------------------------------------------------------
     # Menu Loop
@@ -105,12 +130,19 @@ def main():
         # -------------------------------------------------       
         elif choice == "4":
 
-            un_suspend_cloud_sync(admin)
+            un_suspend_cloud_sync(admin)     
+      
+        # -------------------------------------------------
+        # Reports
+        # -------------------------------------------------       
+        elif choice == "5":
+
+             report_menu(admin)
 
         # -------------------------------------------------
         # Exit
         # -------------------------------------------------
-        elif choice == "5":
+        elif choice == "0":
 
             print(
                 "\nLogging out..."
@@ -134,7 +166,7 @@ def main():
             )
 
             print(
-                "Please choose 1-4."
+                "Please choose 1-5."
             )
 
 

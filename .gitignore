@@ -38,3 +38,6 @@ dist/
 
 .env
 config.py
+
+#Reports
+reports/

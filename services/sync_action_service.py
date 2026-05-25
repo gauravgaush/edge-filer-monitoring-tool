@@ -1,3 +1,21 @@
+"""
+Purpose:
+    Cloud sync operations.
+
+Responsibilities:
+    - Suspend sync
+    - Unsuspend sync
+
+Input:
+    User selection
+    Authenticated admin object
+
+Output:
+    Cloud sync actions
+
+Notes:
+    Includes operator safety checks.
+"""
 def suspend_cloud_sync(admin):
     """
     Suspend cloud sync on:

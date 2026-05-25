@@ -1,5 +1,22 @@
+"""
+Purpose:
+    Handle connection to CTERA portal.
+
+Responsibilities:
+    - Login to portal
+    - Return authenticated admin session
+
+Input:
+    portal, username, password
+
+Output:
+    Logged-in admin object
+
+Notes:
+    Shared by all services.
+"""
 import cterasdk.settings
-from cterasdk import ServicesPortal
+from cterasdk import ServicesPortal, GlobalAdmin
 
 
 def connect_to_portal(portal, username, password):
@@ -10,7 +27,7 @@ def connect_to_portal(portal, username, password):
     try:
         cterasdk.settings.core.syn.settings.connector.ssl = False
 
-        admin = ServicesPortal(portal)
+        admin = GlobalAdmin(portal)
         admin.login(username, password)
 
         print(f"\n✅ Connected to portal: {portal}")

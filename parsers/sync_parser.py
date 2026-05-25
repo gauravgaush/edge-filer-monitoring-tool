@@ -1,3 +1,22 @@
+"""
+Purpose:
+    Transform cloud sync data.
+
+Responsibilities:
+    - Parse sync status
+    - Apply sync business logic
+
+Input:
+    Raw sync object
+
+Output:
+    Parsed dictionary
+
+Notes:
+    Hide details for
+    Synced/Off states.
+"""
+
 def parse_cloud_sync_status(collected_sync):
     """
     Parse cloud sync status.
